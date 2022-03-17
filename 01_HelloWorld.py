@@ -6,7 +6,6 @@
 # can can write python instructions, which will be interpreted one by
 # one, than executed. You can close this interactive session
 # (in Windows) by pressing Ctrl+Z, then pressing Enter.
-from pyclbr import Function
 
 
 print("Hello World!")
