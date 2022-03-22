@@ -273,9 +273,12 @@ x = numpy.zeros(6)
 # will change the value of every other element to starting from index 0
 x[::2] = 3
 print("\nx is:\n", x)
+# the code below means put 0 on the 0th position, 1 on the 2nd position,
+# put 2 on the 3rd position and put 3 on the 4th position of array x, so
+# we will have: [0, 0, 1, 2, 3, 0]
 x[numpy.array([True, False, True, True, True, False],
               dtype=numpy.bool8)] = numpy.arange(4)
-print("\nx is:\n", x)
+print("\nmasked x is:\n", x)
 
 # In general, slicing creates array "views". A view is an array that
 # shares its data with a different one. We can also create explicit
