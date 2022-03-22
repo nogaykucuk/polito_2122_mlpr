@@ -27,10 +27,10 @@ def load(fname):
     return attr, c_label
 
 
-def plot_hist(D, L):
-    D0 = D[:, L == 0]
-    D1 = D[:, L == 1]
-    D2 = D[:, L == 2]
+def plot_hist(attr, label):
+    set = attr[:, label == 0]
+    ver = attr[:, label == 1]
+    vir = attr[:, label == 2]
     hAttr = {
         0: "Sepal length",
         1: "Sepal width",
@@ -40,17 +40,37 @@ def plot_hist(D, L):
     for row in range(4):
         plt.figure()
         plt.xlabel(hAttr[row])
-        plt.hist(D0[row, :], bins=10, density=True, alpha=0.4, label='Setosa')
-        plt.hist(D1[row, :], bins=10, density=True,
+        plt.hist(set[row, :], bins=10, density=True, alpha=0.4, label='Setosa')
+        plt.hist(ver[row, :], bins=10, density=True,
                  alpha=0.4, label='Versicolor')
-        plt.hist(D2[row, :], bins=10, density=True,
+        plt.hist(vir[row, :], bins=10, density=True,
                  alpha=0.4, label='Virginica')
         plt.legend()
     plt.show()
 
 
-def plot_scatter(D, L):
-    pass
+def plot_scatter(attr, label):
+    set = attr[:, label == 0]
+    ver = attr[:, label == 1]
+    vir = attr[:, label == 2]
+    hAttr = {
+        0: "Sepal length",
+        1: "Sepal width",
+        2: "Petal length",
+        3: "Petal width"
+    }
+    for row_i in range(4):
+        for row_j in range(4):
+            if row_i == row_j:
+                continue
+            plt.figure()
+            plt.xlabel(hAttr[row_i])
+            plt.ylabel(hAttr[row_j])
+            plt.scatter(set[row_i, :], set[row_j, :], label='Setosa')
+            plt.scatter(ver[row_i, :], ver[row_j, :], label='Versicolor')
+            plt.scatter(vir[row_i, :], vir[row_j, :], label='Virginica')
+            plt.legend()
+        plt.show()
 
 
 def main():
